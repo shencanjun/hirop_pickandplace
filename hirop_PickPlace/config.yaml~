@@ -1,0 +1,16 @@
+generatorName:
+  Generator
+PickPlacerName:
+  hsr_pickplace
+GeneratorPath:
+  /home/fshs/hirop_pickandplace/generator_libs/
+PickpalcerPath:
+  /home/fshs/catkin_ws/devel/lib/
+GripperName:
+  hsr_grab_operation
+GripperPath:
+  /home/fshs/catkin_ws/devel/lib/
+SerialNo:
+  /dev/ttyS0
+Baudrate:
+  115200

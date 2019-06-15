@@ -1,0 +1,39 @@
+#ifndef IPICKPLACE_H
+#define IPICKPLACE_H
+
+#include "pickandplac.h"
+#include "hplugin.h"
+
+namespace hirop_pickPlace {
+
+class IPickPlace{
+public:
+    virtual int set_pick_poses(pose_vec pickPos) = 0;
+
+    virtual int set_place_poses(pose_vec placePos) = 0;
+
+    virtual int pick() = 0;
+
+    virtual int place() = 0;
+
+    virtual int pickplace_freeback() = 0;
+
+    virtual int stop_pickplace() = 0;
+
+    virtual int getName(std::string &name) = 0;
+
+    virtual ENTITY_TYPE getEntityType() = 0;
+
+    virtual ~IPickPlace(){}
+
+protected:
+    // 保存器的字符描述
+    std::string name;
+
+    // 其算法实现类别 C++ / Python
+    hirop_pickPlace::ENTITY_TYPE entityType;
+};
+
+}
+H_DECLARE_INTERFACE(hirop_pickPlace::IPickPlace,"IPickPlace/v1.0")
+#endif // IPICKPLACE_H
