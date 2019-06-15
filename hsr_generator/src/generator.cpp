@@ -172,13 +172,10 @@ int hsr_generator::get_pick_diraction(euler &pick_euler, pick_vect &vect,move_eu
             {
                vect.vect_x = fabs(sin(-1.57+pick_euler.yaw));
             }
-            //vect.vect_x = fabs((1/cos(pick_euler.yaw))-(cos(pick_euler.yaw)));
-            //vect.vect_x = fabs(tan(pick_euler.yaw));
             vect.vect_y = sin(pick_euler.yaw);
             vect.vect_z = 0;
             pick_euler.roll = 0;
             pick_euler.pitch = 0;
-           // pick_euler.yaw = 0;
         }
     }
     else
@@ -190,7 +187,6 @@ int hsr_generator::get_pick_diraction(euler &pick_euler, pick_vect &vect,move_eu
           {
               pick_euler.yaw = 0;
               pick_euler.pitch = 1.57;
-              //pick_euler.roll = 1.57;
           }
     }
     std::cout<<"pick_euler.r =" <<pick_euler.roll <<std::endl;
