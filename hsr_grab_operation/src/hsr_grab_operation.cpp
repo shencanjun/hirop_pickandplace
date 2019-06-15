@@ -4,6 +4,21 @@ hsr_grab_operation::hsr_grab_operation()
 { 
 }
 
+int hsr_grab_operation::gripper_init()
+{
+    return serial_open("dev/ttyS0", 115200);
+}
+
+int hsr_grab_operation::gripper_open()
+{
+	return _gripper_open(500);
+}
+
+int hsr_grab_operation::gripper_close()
+{
+	return _gripper_close(600,500);
+}
+
 int hsr_grab_operation::serial_open(std::string serialNo,int baudrate)
 {
 	client_serialOpen = n_gripper.serviceClient<hsr_gripper_driver::serial_open_srv>("serial_open");
@@ -20,24 +35,7 @@ int hsr_grab_operation::serial_open(std::string serialNo,int baudrate)
 	}	
 }
 
-int hsr_grab_operation::gripper_open_size(int grab_max,int grab_min)
-{
-	client_gripperOpenSize = n_gripper.serviceClient<hsr_gripper_driver::open_size_srv>("gripper_set_open_size");
-    hsr_gripper_driver::open_size_srv gripperOpenSize_srv;
-
-	gripperOpenSize_srv.request.max = grab_max;
-	gripperOpenSize_srv.request.min = grab_min;
-    if(client_gripperOpenSize.call(gripperOpenSize_srv)) 
-	{
-		std::cout<<"Set the open size of the Gripper sucessful!!!"<<std::endl;
-	}
-	else
-	{
-		std::cout<<"Set the open size of the Gripper failed!!!"<<std::endl;
-	}	    
-}
-
-int hsr_grab_operation::gripper_open(int speed)
+int hsr_grab_operation::_gripper_open(int speed)
 {
 	client_gripperOpen = n_gripper.serviceClient<hsr_gripper_driver::open_srv>("gripper_open");
     hsr_gripper_driver::open_srv gripperOpen_srv;
@@ -52,7 +50,7 @@ int hsr_grab_operation::gripper_open(int speed)
 	}	
 }
 
-int hsr_grab_operation::gripper_close(int speed, int force)
+int hsr_grab_operation::_gripper_close(int speed, int force)
 {
 	client_gripperClose = n_gripper.serviceClient<hsr_gripper_driver::close_srv>("gripper_close");
     hsr_gripper_driver::close_srv gripperClose_srv;
@@ -68,22 +66,6 @@ int hsr_grab_operation::gripper_close(int speed, int force)
 	else
 	{
 		std::cout<<"Close the Gripper failed!!!"<<std::endl;
-	}
-}
-
-int hsr_grab_operation::gripper_Stop()
-{
-	client_gripperStop = n_gripper.serviceClient<hsr_gripper_driver::stop_srv>("gripper_stop");
-    hsr_gripper_driver::stop_srv gripperStop_srv;
-				
-	if(client_gripperStop.call(gripperStop_srv))
-	{
-		std::cout<<"Stop the Gripper sucessful!!!"<<std::endl;
-
-	}
-	else
-	{
-		std::cout<<"Stop the Gripper failed!!!"<<std::endl;
 	}
 }
 

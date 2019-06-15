@@ -93,25 +93,5 @@ int Configure::getGripperPath(std::string &gripperPath)
     return 0;
 }
 
-int Configure::getSerial(std::string &serialNo,int &baudrate)
-{
-    if(!config["SerialNo"])
-    {
-        std::cerr << "Get SerialNo error:  No SerialNo node" << std::endl;
-        return -1;
-    }
-    if(!config["Baudrate"])
-    {
-        std::cerr << "Get Baudrate error:  No Baudrate node" << std::endl;
-        return -1;
-    }
-    serialNo = config["SerialNo"].as<std::string>();
-
-    return 0;
-    baudrate = config["Baudrate"].as<int>();
-
-    return 0;
-}
-
 
 

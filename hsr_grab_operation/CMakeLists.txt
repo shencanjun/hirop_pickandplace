@@ -121,9 +121,10 @@ message_runtime
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
-  include ${catkin_INCLUDE_DIRS}
-  /home/fshs/catkin_ws/src/hirop_pickandplace/hirop_PickPlace/include/
-  /home/fshs/catkin_ws/src/hirop_pickandplace/hirop_PickPlace/
+  include 
+  ${catkin_INCLUDE_DIRS}
+  include/../../hirop_PickPlace/include/
+  include/../../hirop_PickPlace/
 # include
 # ${catkin_INCLUDE_DIRS}
 )
@@ -206,7 +207,7 @@ include_directories(
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
 
-LINK_DIRECTORIES(/home/fshs/catkin_ws/src/hirop_pickandplace/hsr_pickplace/include/3rd/libs)
+LINK_DIRECTORIES($qwd/3rd/libs)
 
 add_library(hsr_grab_operation
   src/hsr_grab_operation.cpp

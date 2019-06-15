@@ -118,13 +118,13 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
-# include
-  /home/fshs/catkin_ws/src/hirop_pickandplace/hsr_pickplace/include
-  /home/fshs/catkin_ws/src/hirop_pickandplace/hirop_PickPlace/include
+  include
+  include/../../hirop_PickPlace/include
+  include/../../hirop_PickPlace
   ${catkin_INCLUDE_DIRS}
 )
 
-LINK_DIRECTORIES(/home/fshs/catkin_ws/src/hirop_pickandplace/hsr_pickplace/include/3rd/libs)
+LINK_DIRECTORIES($pwd/../3rd/libs)
 
 ## Declare a C++ library
 add_library(${PROJECT_NAME}

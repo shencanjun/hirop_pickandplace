@@ -10,7 +10,3 @@ GripperName:
   hsr_grab_operation
 GripperPath:
   /home/fshs/catkin_ws/devel/lib/
-SerialNo:
-  /dev/ttyS0
-Baudrate:
-  115200

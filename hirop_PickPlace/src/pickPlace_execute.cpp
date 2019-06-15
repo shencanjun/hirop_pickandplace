@@ -29,7 +29,6 @@ int PickPlace::setConfigName(std::string fileName)
      _setGeneratorConfig();
      _setPickPlaceConfig();
      _setGripperConfig();
-     _gripperInit();
      return 0;
 }
 
@@ -84,14 +83,6 @@ int PickPlace::_setGripperConfig()
        return -1;
    }
    return 0;
-}
-
-int PickPlace::_gripperInit()
-{
-    std::string serialNo;
-    int baudrate;
-    configuer->getSerial(serialNo,baudrate);
-    this->gripper->serial_open(serialNo,baudrate);
 }
 
 int PickPlace::pickPlaceRun(geometry_msgs::Pose pickPos, geometry_msgs::Pose placePos)
@@ -150,22 +141,22 @@ int PickPlace::pickPlaceRun(geometry_msgs::Pose pickPos, geometry_msgs::Pose pla
     pickplace->set_object(objectPose);
     if(this->_pick(pickPoss)  == 0 && ! _stop_flag)
     {
-        gripper->gripper_close(500,500);
+        gripper->gripper_close();
         if(this->_place(placePoss)  == 0 && !_stop_flag)
         {
-            this->gripper->gripper_open(500);
+            this->gripper->gripper_open();
             std::cout<<"pick and place succeeful! ! !"<<std::endl;
         }
         else
         {
-            this->gripper->gripper_open(500);
+            this->gripper->gripper_open();
             std::cerr<<"place failed! ! !"<<std::endl;
             return -1;
         }
     }
     else
     {
-        gripper->gripper_open(500);
+        gripper->gripper_open();
         std::cerr<<"pick failed! ! !"<<std::endl;
         return -1;
     }

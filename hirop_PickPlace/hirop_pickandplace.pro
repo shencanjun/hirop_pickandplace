@@ -34,5 +34,5 @@ HEADERS += \
     include/pickPlace_execute.h \
     include/configuer.h
 
-LIBS += -Wl,-rpath=/home/fshs/hirop_pickandplace/3rd/libs  -L/home/fshs/hirop_pickandplace/3rd/libs -ldl -lHPlugin
-LIBS += -L/home/fshs/yaml-cpp/build/libyaml-cpp
+LIBS += -Wl,-rpath=$$PWD/../3rd/libs  -L$$PWD/../3rd/libs -ldl -lHPlugin
+LIBS += -L$$HOME/yaml-cpp/build/libyaml-cpp

@@ -47,14 +47,16 @@ catkin_package(
 include_directories(
   include ${catkin_INCLUDE_DIRS}
   include
-  /home/fshs/catkin_ws/src/hirop_pickandplace/hirop_PickPlace/
-  /home/fshs/catkin_ws/src/hirop_pickandplace/hirop_PickPlace/include
+  include/../../hirop_PickPlace/
+  include/../../hirop_PickPlace/include
   ${catkin_INCLUDE_DIRS}
 )
-include_directories(/home/fshs/yaml-cpp/include/)
+include_directories($pwd/../../../../yaml-cpp/include/)
 
-LINK_DIRECTORIES(/home/fshs/catkin_ws/src/hirop_pickandplace/install_libs
-                 /home/fshs/catkin_ws/src/yaml-cpp/build)
+LINK_DIRECTORIES(
+                  /home/shen/install_libs/
+                 /home/shen/yaml-cpp/build/
+                )
 
 add_executable(pick_place_bridge
   src/main.cpp
